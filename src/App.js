@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DrawerMenu from './DrawerMenu';
 import FolderList from './FolderList';
+import BasicBarGraph from './BasicBarGraph';
+import SegmentedBarGraph from './SegmentedBarGraph';
 
 const drawerWidth = 240;
 
@@ -66,6 +68,21 @@ export default function App() {
     { primary: 'Portfolio', secondary: 'Last Month', icon: 'image' },
   ];
 
+  const renderContent = () => {
+    switch (currentPage) {
+      case 'Home':
+        return <FolderList items={homeItems} />;
+      case 'Profile':
+        return <FolderList items={profileItems} />;
+      case 'Basic Graph':
+        return <BasicBarGraph />;
+      case 'Rainfall Statistics':
+        return <SegmentedBarGraph />;
+      default:
+        return <Typography paragraph>Select a page from the menu</Typography>;
+    }
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -95,11 +112,7 @@ export default function App() {
       <Main open={open}>
         <DrawerHeader />
         <Typography paragraph>{currentPage} Content:</Typography>
-        {currentPage === 'Home' ? (
-          <FolderList items={homeItems} />
-        ) : (
-          <FolderList items={profileItems} />
-        )}
+        {renderContent()}
       </Main>
     </Box>
   );
