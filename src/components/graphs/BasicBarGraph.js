@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { basicDataset, valueFormatter } from './/dataset/basicData';
+import { basicDataset, valueFormatter } from '../../dataset/basicData';
 
 const chartSettings = {
   yAxis: [

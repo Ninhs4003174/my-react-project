@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { axisClasses } from '@mui/x-charts/ChartsAxis';
-import { dataset, valueFormatter } from './/dataset/weather';
+import { dataset, valueFormatter } from '../../dataset/weather';
 
 const chartSetting = {
   yAxis: [
