@@ -7,8 +7,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import DrawerMenu from './DrawerMenu';
-import FolderList from './FolderList';
+import DrawerMenu from '../components/navigation/DrawerMenu';
+import Profile from './Profile';
+import BasicGraphScreen from './BasicGraphScreen';
+import SegmentedGraphScreen from './SegmentedGraphScreen';
 
 const drawerWidth = 240;
 
@@ -49,22 +51,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function App() {
+export default function Home() {
   const [open, setOpen] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState('Home');
 
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
-
-  const homeItems = [
-    { primary: 'Photos', secondary: 'Jan 9, 2014', icon: 'image' },
-    { primary: 'Work', secondary: 'Jan 7, 2014', icon: 'work' },
-  ];
-
-  const profileItems = [
-    { primary: 'Resume', secondary: 'Updated Today', icon: 'work' },
-    { primary: 'Portfolio', secondary: 'Last Month', icon: 'image' },
-  ];
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -94,11 +86,12 @@ export default function App() {
 
       <Main open={open}>
         <DrawerHeader />
-        <Typography paragraph>{currentPage} Content:</Typography>
-        {currentPage === 'Home' ? (
-          <FolderList items={homeItems} />
-        ) : (
-          <FolderList items={profileItems} />
+        {currentPage === 'Home' && <Typography paragraph>Welcome to the Home page!</Typography>}
+        {currentPage === 'Profile' && <Profile />}
+        {currentPage === 'Basic Graph' && <BasicGraphScreen />}
+        {currentPage === 'Rainfall Statistics' && <SegmentedGraphScreen />}
+        {!['Home', 'Profile', 'Basic Graph', 'Rainfall Statistics'].includes(currentPage) && (
+          <Typography paragraph>Select a page from the menu</Typography>
         )}
       </Main>
     </Box>

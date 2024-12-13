@@ -45,7 +45,7 @@ export default function DrawerMenu({ open, handleDrawerClose, setCurrentPage }) 
       </DrawerHeader>
       <Divider />
       <List>
-        {['Home', 'Profile'].map((text) => (
+        {['Home', 'Profile', 'Basic Graph', 'Rainfall Statistics'].map((text) => (
           <ListItem key={text} disablePadding>
             <ListItemButton onClick={() => setCurrentPage(text)}>
               <ListItemText primary={text} />
@@ -56,3 +56,4 @@ export default function DrawerMenu({ open, handleDrawerClose, setCurrentPage }) 
     </Drawer>
   );
 }
+
